@@ -48,19 +48,24 @@ public class LinkedListClass {
         return size;
     }
 
-    public void findDeleteNodo(Object valor) {
+    public void deleteNode(Object value) {
         Node iterator = head;
-        Node nodoToDelete = null;
-        if (iterator == null) {
+        Node previousNode = null;
+        boolean found = false;
 
-        } else {
-            while (iterator.getNext() != null) {
-                if (iterator.getValor().equals(valor)) {
-                    iterator.getNext().setNext(nodoToDelete);
-                    return;
-                }
+        while (iterator != null && !found) {
+            found = (iterator.getValor().equals(value));
+            if (!found) {
+                previousNode = iterator;
                 iterator = iterator.getNext();
+            }
 
+        }
+        if(iterator!=null){
+            if(iterator == head){
+                head = iterator.getNext();
+            }else{
+               previousNode.setNext(iterator.getNext());
             }
         }
     }
@@ -69,9 +74,9 @@ public class LinkedListClass {
         if (head != null) {
             Node temp = head;
             while (temp != null) {
-                if(temp.getNext()!= null){
+                if (temp.getNext() != null) {
                     System.out.print(temp.getValor() + " -> ");
-                }else{
+                } else {
                     System.out.print(temp.getValor());
                 }
                 temp = temp.getNext();

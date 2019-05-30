@@ -24,7 +24,9 @@ public class LinkedList {
         liga.addTail(10);
         liga.addTail(11);
         liga.addHead(0);
+        liga.deleteNode("Holi");
         liga.toStringList();
+        System.out.println(" ");
         
     }
 
